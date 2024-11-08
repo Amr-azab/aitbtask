@@ -1,0 +1,15 @@
+const express = require("express");
+const customerRoutes = require("./src/customer/route");
+const adminRoutes = require("./src/admin/route");
+const supportRoutes = require("./src/support/route");
+const path = require("path");
+const fs = require("fs");
+// const dotenv = require("dotenv");
+const app = express();
+// dotenv.config({ path: "./config.env" });
+app.use(express.json());
+app.use(express.static(path.join(__dirname, "public")));
+app.use("/api/admin", adminRoutes);
+app.use("/api/support", supportRoutes);
+app.use("/api/customer", customerRoutes);
+module.exports = app;
