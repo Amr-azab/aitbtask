@@ -34,7 +34,7 @@ exports.viewAllTickets = async () => {
     .join("items", "tickets.item_id", "items.id")
     .select(
       "tickets.id as ticket_id",
-      "tickets.generatedGuiId",
+      "tickets.guiId",
       "users.username as customer",
       "items.name as item_name",
       "tickets.status",
@@ -97,7 +97,7 @@ exports.updateTicket = async (ticketId, data) => {
   const updatedTicket = await knex("tickets")
     .select(
       "id",
-      "generatedGuiId",
+      "guiId",
       "status",
       "description",
       "user_id",

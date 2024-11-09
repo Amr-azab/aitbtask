@@ -1,0 +1,39 @@
+/* General styling for the vertical navbar */
+.nav.flex-column {
+  background-color: #033b72; /* Dark blue background color */
+  color: white;
+  width: 250px; /* Set a fixed width */
+  height: auto; /* Adjust height to content */
+}
+
+.nav-section {
+  margin-bottom: 1rem;
+}
+
+.nav-link-section {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.nav-link {
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Adjust space between icon and text */
+  padding: 10px 15px;
+  border-radius: 5px;
+}
+
+.nav-link:hover {
+  background-color: #0056b3; /* Change background color on hover */
+  color: #fff;
+  text-decoration: none;
+}
+
+.nav-link i {
+  font-size: 1.2rem; /* Adjust icon size */
+}
+
+hr {
+  border: 1px solid #fff;
+}

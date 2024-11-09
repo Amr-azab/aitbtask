@@ -1,0 +1,31 @@
+p {
+  font-size: 0.9rem;
+  /* color: red !important; */
+}
+.bg-dark-blue {
+  background-color: #033b72; /* Dark blue color */
+  color: white;
+}
+/* Align navbar links horizontally */
+.navbar-links {
+  display: flex;
+  gap: 1rem; /* Adjust the gap as needed */
+  align-items: center; /* Center vertically with the navbar */
+}
+
+/* Optional: Adjust spacing between icon and text */
+.navbar-links p i {
+  margin-right: 5px; /* Space between icon and text */
+}
+
+.navbar-profile {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.profile-pic {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}

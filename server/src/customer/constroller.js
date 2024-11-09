@@ -107,3 +107,27 @@ exports.signOut = catchAsync(async (req, res, next) => {
     message: "User signed out successfully",
   });
 });
+// Retrieve user data after sign-up or sign-in
+exports.getMe = catchAsync(async (req, res, next) => {
+  const userId = req.user.id; // `protect` middleware extracts user ID from token
+
+  // Retrieve the user details by ID
+  const user = await customerModel.selectUserById(userId);
+
+  if (!user) {
+    return next(new AppError("User not found", 404));
+  }
+
+  res.status(200).json({
+    message: "User data retrieved successfully",
+    user: {
+      id: user.id,
+      username: user.username,
+      email: user.email,
+      phone: user.phone,
+      role: user.role,
+      isActive: user.isActive,
+      isDeleted: user.isDeleted,
+    },
+  });
+});

@@ -29,7 +29,7 @@ exports.up = async function (knex) {
   // Tickets Table
   await knex.schema.createTable("tickets", (table) => {
     table.string("id").primary(); // No auto-increment, id is a string
-    table.string("generatedGuiId").unique();
+    table.string("guiId").unique();
     table
       .string("user_id") // Foreign key to users
       .references("id")

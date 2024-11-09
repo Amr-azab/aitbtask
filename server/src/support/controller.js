@@ -150,7 +150,7 @@ exports.updateTicket = catchAsync(async (req, res, next) => {
     message: "Ticket updated successfully",
     updatedTicket: {
       id: updatedTicket.id,
-      generatedGuiId: updatedTicket.generatedGuiId,
+      guiId: updatedTicket.guiId,
       status: updatedTicket.status,
       description: updatedTicket.description,
       userId: updatedTicket.user_id, // Corrected field name
@@ -163,4 +163,15 @@ exports.updateTicket = catchAsync(async (req, res, next) => {
 exports.viewAllItems = catchAsync(async (req, res, next) => {
   const items = await supportModel.viewAllItems();
   res.status(200).json({ message: "Items retrieved successfully", items });
+});
+exports.signOut = catchAsync(async (req, res, next) => {
+  // Clear the JWT token from cookies
+  res.cookie("jwt", "", {
+    httpOnly: true,
+    expires: new Date(0), // Set to a past date to clear the cookie
+  });
+
+  res.status(200).json({
+    message: "User signed out successfully",
+  });
 });

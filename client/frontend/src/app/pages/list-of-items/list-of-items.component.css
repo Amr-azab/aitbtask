@@ -1,0 +1,23 @@
+.text:hover {
+  transform: scale(1.1);
+  transition: all 1.6s ease-out;
+}
+.text hr {
+  border: 2px solid #000;
+}
+
+.news .row .col-md-4:nth-child(odd) .card:hover {
+  transform: rotate(30deg);
+  transform: scale(0.8);
+  transition: all 1.2s ease-in-out;
+}
+.news .row .col-md-4:nth-child(even) .card:hover {
+  transform: rotate(-30deg);
+  transform: scale(1.1);
+  transition: all 1.2s ease-in-out;
+}
+
+/* Set the background color of the section heading to gray */
+.bg-secondary {
+  background-color: gray !important;
+}

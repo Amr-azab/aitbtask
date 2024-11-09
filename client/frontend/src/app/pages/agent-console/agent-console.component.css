@@ -1,0 +1,40 @@
+/* Full height for the vertical navbar */
+.nav.flex-column {
+  height: 100vh;
+  background-color: #033b72;
+  color: white;
+  padding: 1rem;
+}
+
+.nav-link {
+  color: white;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nav-link:hover {
+  background-color: #0056b3;
+  color: white;
+  border-radius: 0.5rem;
+}
+
+.nav-link i {
+  font-size: 1.2rem;
+}
+
+.app-navbarconsole {
+  background-color: #033b72;
+  color: white;
+  padding: 1rem;
+}
+
+.app-viewticket {
+  padding: 1rem;
+  background-color: #f8f9fa;
+}
+
+.container-fluid {
+  padding: 0;
+}

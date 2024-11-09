@@ -1,0 +1,10 @@
+.edit-link {
+  color: #007bff;
+  text-decoration: none;
+}
+.edit-link:hover {
+  text-decoration: underline;
+}
+.modal-body .form-control {
+  max-width: calc(100% - 50px);
+}

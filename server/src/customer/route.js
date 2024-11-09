@@ -6,6 +6,7 @@ const router = express.Router();
 router.post("/signup", customerController.signUp);
 router.post("/signin", customerController.signIn);
 router.use(protect);
+router.get("/getMe", customerController.getMe);
 router.get("/items", customerController.viewItems);
 router.post("/ticket", customerController.createTicket);
 router.get("/tickets/:userId", customerController.viewMyTickets);

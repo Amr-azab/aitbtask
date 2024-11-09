@@ -1,0 +1,92 @@
+<section class="request-form my-5">
+  <div class="container">
+    <div class="form-header bg-dark text-white p-3">
+      <h2>Request Form</h2>
+    </div>
+    <form class="mt-4">
+      <div class="mb-3">
+        <label class="form-label">Request ID:</label>
+        <p class="form-control-plaintext">REQ000000001</p>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Priority:</label>
+        <p class="form-control-plaintext">Low</p>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">SLA:</label>
+        <div class="sla-bar bg-light">
+          <div class="sla-segment bg-success"></div>
+          <div class="sla-segment bg-warning"></div>
+          <div class="sla-segment bg-danger"></div>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">User:</label>
+        <p class="form-control-plaintext">Youssef</p>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Phone:</label>
+        <p class="form-control-plaintext">012-345-6789</p>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Email:</label>
+        <p class="form-control-plaintext">youssefexample.com</p>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Customer:</label>
+        <p class="form-control-plaintext">Customer Name</p>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Company:</label>
+        <p class="form-control-plaintext">Company Name</p>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Organization:</label>
+        <p class="form-control-plaintext">Organization Name</p>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Department:</label>
+        <p class="form-control-plaintext">Department Name</p>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Contact Type:</label>
+        <p class="form-control-plaintext">Phone</p>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Summary:</label>
+        <p class="form-control-plaintext">Request summary goes here</p>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Description:</label>
+        <textarea
+          class="form-control"
+          id="description"
+          rows="3"
+          placeholder="Request description"
+        ></textarea>
+      </div>
+      <div class="mb-3">
+        <label for="status" class="form-label">Status:</label>
+        <select class="form-select" id="status">
+          <option value="new">New</option>
+          <option value="resolved">Resolved</option>
+          <option value="canceled">Canceled</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="statusReason" class="form-label">Status Reason:</label>
+        <p class="form-control-plaintext">New</p>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Urgency:</label>
+        <p class="form-control-plaintext">Low</p>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Impact:</label>
+        <p class="form-control-plaintext">Low</p>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="reset" class="btn btn-secondary">Reset</button>
+    </form>
+  </div>
+</section>

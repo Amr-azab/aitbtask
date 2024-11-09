@@ -98,7 +98,7 @@ exports.createTicket = async (userId, itemId, description) => {
   await knex("tickets")
     .insert({
       id: ticketId,
-      generatedGuiId: guiId,
+      guiId: guiId,
       user_id: userId,
       item_id: itemId,
       status: "New",
@@ -116,7 +116,7 @@ exports.viewMyTickets = async (userId) => {
     .join("items", "tickets.item_id", "items.id")
     .select(
       "tickets.id as ticket_id",
-      "tickets.generatedGuiId",
+      "tickets.guiId",
       "items.name as item_name",
       "tickets.status",
       "tickets.description",

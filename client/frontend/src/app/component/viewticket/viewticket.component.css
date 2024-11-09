@@ -1,0 +1,29 @@
+/* General styling for the request console */
+.request-console {
+  margin-top: 30px;
+}
+
+.request-console .table-responsive {
+  margin-top: 20px;
+}
+
+.request-console table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.request-console th,
+.request-console td {
+  padding: 12px 15px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+.request-console thead {
+  background-color: #033b72; /* Dark blue background color */
+  color: white;
+}
+
+.request-console tbody tr:hover {
+  background-color: #f1f1f1;
+}

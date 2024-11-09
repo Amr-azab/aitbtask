@@ -159,7 +159,7 @@ exports.updateTicket = catchAsync(async (req, res, next) => {
     message: "Ticket updated successfully",
     updatedTicket: {
       id: updatedTicket.id,
-      generatedGuiId: updatedTicket.generatedGuiId,
+      guiId: updatedTicket.guiId,
       status: updatedTicket.status,
       description: updatedTicket.description,
       userId: updatedTicket.user_id, // Corrected field name
@@ -200,4 +200,15 @@ exports.restoreTicket = catchAsync(async (req, res, next) => {
   await adminModel.restoreTicket(ticketId);
 
   res.status(200).json({ message: "Ticket restored successfully" });
+});
+exports.signOut = catchAsync(async (req, res, next) => {
+  // Clear the JWT token from cookies
+  res.cookie("jwt", "", {
+    httpOnly: true,
+    expires: new Date(0), // Set to a past date to clear the cookie
+  });
+
+  res.status(200).json({
+    message: "User signed out successfully",
+  });
 });

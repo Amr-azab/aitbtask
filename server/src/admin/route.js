@@ -18,5 +18,6 @@ router.get("/tickets", adminController.viewTickets);
 router.patch("/ticket/:ticketId", adminController.updateTicket);
 router.delete("/ticket/:ticketId", adminController.deleteTicket);
 router.patch("/ticket/:ticketId/restore", adminController.restoreTicket);
+router.post("/signOut", adminController.signOut);
 
 module.exports = router;

@@ -1,16 +1,10 @@
-// roleMiddleware.js
-const roleMiddleware = (requiredRole) => {
+exports.restrictTo = (...roles) => {
   return (req, res, next) => {
-    const userRole = req.user.role; // Assuming role is attached to the request (e.g., via token decoding)
-
-    if (userRole !== requiredRole) {
-      return res
-        .status(403)
-        .json({ message: "Access denied: Insufficient permissions" });
+    if (!roles.includes(req.user.role)) {
+      return next(
+        new AppError("You do not have permission to perform this action", 403)
+      );
     }
-
     next();
   };
 };
-
-module.exports = roleMiddleware;

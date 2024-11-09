@@ -1,0 +1,106 @@
+/* Custom styles for header and logo */
+.custom-header {
+  background-color: #34495e; /* Customize this color as needed */
+  color: #ecf0f1; /* Customize this color as needed */
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.logo {
+  font-family: "Arial Black", sans-serif; /* Use a similar bold, sans-serif font */
+  font-size: 36px; /* Adjust size as needed */
+  margin-bottom: 10px;
+}
+
+.blue-text {
+  color: #3498db; /* Blue color */
+}
+
+.orange-bar {
+  color: #e67e22; /* Orange color */
+}
+
+/* Add styles for error display */
+.input-container {
+  position: relative;
+}
+
+.input-container .error-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: red;
+}
+
+.invalid {
+  border: 1px solid red;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.9em;
+  margin-top: 5px;
+}
+
+/* Additional CSS for overall styling */
+body {
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  max-width: 800px;
+  margin: auto;
+}
+
+.header {
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.form-control.mt-2 {
+  margin-top: 10px;
+}
+
+.btn {
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+/* New styles for the sign-up image */
+.signup-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.signup-image img {
+  max-width: 100%;
+  border-radius: 10px;
+}
+
+/* Styles for the sign-in link */
+.signin-link {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.signin-link a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.signin-link a:hover {
+  text-decoration: underline;
+}
