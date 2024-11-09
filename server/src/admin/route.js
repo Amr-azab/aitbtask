@@ -1,6 +1,7 @@
 const express = require("express");
 const adminController = require("./controller");
 const { protect } = require("../Authentication/authcontroller");
+const upload = require("../utlis/upload");
 
 const router = express.Router();
 
@@ -10,8 +11,12 @@ router.get("/users", adminController.getAllUsers);
 router.delete("/user/:id", adminController.deleteUser);
 router.patch("/user/:id/restore", adminController.restoreUser);
 router.get("/items", adminController.getAllItems);
-router.post("/item", adminController.addItem);
-router.patch("/item/:itemId", adminController.updateItem);
+router.post("/item", upload.single("photo"), adminController.addItem);
+router.patch(
+  "/item/:itemId",
+  upload.single("photo"),
+  adminController.updateItem
+);
 router.delete("/item/:itemId", adminController.deleteItem);
 router.patch("/item/:itemId/restore", adminController.restoreItem);
 router.get("/tickets", adminController.viewTickets);

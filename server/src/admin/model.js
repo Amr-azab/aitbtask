@@ -58,7 +58,7 @@ exports.restoreUser = async (id) => {
 
 // Add an item
 // Add a new item
-exports.addItem = async (name, price, description) => {
+exports.addItem = async (name, price, description, imagePath) => {
   const itemId = generateUniqueId();
 
   // Insert the new item
@@ -67,6 +67,7 @@ exports.addItem = async (name, price, description) => {
     name,
     price,
     description,
+    photo: imagePath,
     isActive: 1,
     isDeleted: 0,
   });

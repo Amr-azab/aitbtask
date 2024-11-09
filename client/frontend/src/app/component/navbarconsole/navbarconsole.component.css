@@ -29,3 +29,11 @@ p {
   height: 30px;
   border-radius: 50%;
 }
+
+.aitb-logo {
+  background: url("../../../assets/images/aitblogoblue.JPG") no-repeat center
+    center; /* Replace with your logo path */
+  background-size: contain;
+  height: 60px; /* Adjust the height as needed */
+  width: 100px; /* Adjust the width as needed */
+}

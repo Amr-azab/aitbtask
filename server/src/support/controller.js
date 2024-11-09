@@ -7,48 +7,8 @@ const catchAsync = require("../utlis/catchAsync"); // Import your catchAsync wra
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const generateToken = require("../utlis/generateToken");
-const dotenv = require("dotenv");
-dotenv.config({ path: "./config.env" });
-cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-  api_key: process.env.CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_API_SECRET,
-});
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, path.join(__dirname, "../../public/images")); // Store in public/images
-  },
-  filename: function (req, file, cb) {
-    cb(null, Date.now() + path.extname(file.originalname)); // Add timestamp to the filename
-  },
-});
-const fileFilter = (req, file, cb) => {
-  const allowedTypes = /jpeg|jpg|png|gif/;
-  const mimeType = allowedTypes.test(file.mimetype);
-  const extName = allowedTypes.test(path.extname(file.originalname));
+const upload = require("../utlis/upload");
 
-  if (mimeType && extName) {
-    cb(null, true);
-  } else {
-    cb(new Error("Only image files are allowed!"), false);
-  }
-};
-const upload = multer({ storage, fileFilter });
-exports.addItem = [
-  upload.single("photo"), // Use multer middleware to handle file upload
-  catchAsync(async (req, res, next) => {
-    const { name, price, description } = req.body;
-    const imagePath = req.file ? `/images/${req.file.filename}` : null; // Store relative image path in DB
-
-    const itemId = await supportModel.addItem(
-      name,
-      price,
-      description,
-      imagePath
-    );
-    res.status(201).json({ message: "Item added successfully", itemId });
-  }),
-];
 // const generateToken = (id) => {
 //   return jwt.sign({ id }, process.env.JWT_SECRET, {
 //     expiresIn: process.env.JWT_EXPIRES_IN,
@@ -81,21 +41,17 @@ exports.viewAllTickets = catchAsync(async (req, res, next) => {
 });
 
 // Add a new item
-exports.addItem = [
-  upload.single("photo"), // Use multer middleware to handle file upload
-  catchAsync(async (req, res, next) => {
-    const { name, price, description } = req.body;
-    const imagePath = req.file ? `/images/${req.file.filename}` : null; // Store relative image path in DB
-
-    const itemId = await supportModel.addItem(
-      name,
-      price,
-      description,
-      imagePath
-    );
-    res.status(201).json({ message: "Item added successfully", itemId });
-  }),
-];
+exports.addItem = catchAsync(async (req, res, next) => {
+  const { name, price, description } = req.body;
+  const imagePath = req.file ? `/images/${req.file.filename}` : null;
+  const itemId = await supportModel.addItem(
+    name,
+    price,
+    description,
+    imagePath
+  );
+  res.status(201).json({ message: "Item added successfully", itemId });
+});
 
 // Delete an item (soft delete by setting isDeleted and isActive flags)
 exports.deleteItem = catchAsync(async (req, res, next) => {
@@ -114,11 +70,12 @@ exports.deleteItem = catchAsync(async (req, res, next) => {
 exports.updateItem = catchAsync(async (req, res, next) => {
   const { itemId } = req.params;
   const { name, price, description } = req.body;
-
+  const imagePath = req.file ? `/images/${req.file.filename}` : null;
   const updatedItem = await supportModel.updateItem(itemId, {
     name,
     price,
     description,
+    photo: imagePath,
   });
   if (!updatedItem) {
     return next(new AppError("Item not found", 404));

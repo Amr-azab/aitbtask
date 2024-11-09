@@ -1,26 +1,53 @@
 /* Custom styles for header and logo */
 .custom-header {
-  background-color: #34495e; /* Customize this color as needed */
-  color: #ecf0f1; /* Customize this color as needed */
+  background-color: #d3d3d3; /* Gray background color */
+  color: #ecf0f1;
   padding: 20px;
   border-radius: 10px;
 }
 
-.logo {
-  font-family: "Arial Black", sans-serif; /* Use a similar bold, sans-serif font */
-  font-size: 36px; /* Adjust size as needed */
-  margin-bottom: 10px;
+.title-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px; /* Adjust the gap value to increase or decrease the space */
 }
 
-.blue-text {
-  color: #3498db; /* Blue color */
+.logo-image {
+  background: url("../../../assets/images/aitb-logo.jpeg") no-repeat center
+    center;
+  background-size: contain;
+  width: 100px;
+  height: 100px;
 }
 
-.orange-bar {
-  color: #e67e22; /* Orange color */
+.aitb-logo {
+  background: url("../../../assets/images/aitb-logo.jpeg") no-repeat center
+    center; /* Replace with the actual logo path */
+  background-size: contain;
+  width: 50px;
+  height: 50px;
 }
 
-/* Add styles for error display */
+.title-text {
+  font-family: "Arial Black", sans-serif;
+  text-align: center;
+  color: #0828df; /* Match the logo color */
+}
+
+.sign-up-text {
+  font-family: "Arial Black", sans-serif;
+  font-size: 28px;
+  color: #051571; /* Match the logo color */
+}
+
+.csm-text {
+  font-family: "Arial Black", sans-serif;
+  font-size: 24px;
+  color: #051571; /* Match the logo color */
+  margin-top: -10px;
+}
+
 .input-container {
   position: relative;
 }
@@ -79,14 +106,14 @@ body {
 
 /* New styles for the sign-up image */
 .signup-image {
+  background: url("../../../assets/images/callcenter.jpg") no-repeat center
+    center;
+  background-size: cover;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
-}
-
-.signup-image img {
-  max-width: 100%;
+  width: 100%;
   border-radius: 10px;
 }
 

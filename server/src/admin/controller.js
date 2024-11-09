@@ -3,6 +3,7 @@ const AppError = require("../utlis/appError");
 const catchAsync = require("../utlis/catchAsync");
 const jwt = require("jsonwebtoken");
 const generateToken = require("../utlis/generateToken");
+const upload = require("../utlis/upload");
 exports.getAllUsers = catchAsync(async (req, res, next) => {
   const users = await adminModel.selectUsers();
   res.status(200).json(users);
@@ -55,17 +56,11 @@ exports.restoreUser = catchAsync(async (req, res, next) => {
 // Add a new item
 exports.addItem = catchAsync(async (req, res, next) => {
   const { name, price, description } = req.body;
-
-  const newItem = await adminModel.addItem(name, price, description);
+  const imagePath = req.file ? `/images/${req.file.filename}` : null;
+  const newItem = await adminModel.addItem(name, price, description, imagePath);
   res.status(201).json({
     message: "Item added successfully",
-    newItem: {
-      id: newItem.id,
-      name: newItem.name,
-      price: newItem.price,
-      description: newItem.description,
-      photo: newItem.photo, // Photo field can be null or empty depending on your setup
-    },
+    newItem,
   });
 });
 
@@ -119,11 +114,12 @@ exports.getAllItems = catchAsync(async (req, res, next) => {
 exports.updateItem = catchAsync(async (req, res, next) => {
   const { itemId } = req.params;
   const { name, price, description } = req.body;
-
+  const imagePath = req.file ? `/images/${req.file.filename}` : null;
   const updatedItem = await adminModel.updateItem(itemId, {
     name,
     price,
     description,
+    photo: imagePath,
   });
 
   if (!updatedItem) {

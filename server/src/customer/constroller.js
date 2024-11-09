@@ -102,7 +102,7 @@ exports.signOut = catchAsync(async (req, res, next) => {
     httpOnly: true,
     expires: new Date(0), // Set to a past date to clear the cookie
   });
-
+  res.set("Authorization", ""); // Clear Authorization header
   res.status(200).json({
     message: "User signed out successfully",
   });

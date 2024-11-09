@@ -11,6 +11,14 @@
   color: rgb(37, 37, 182); /* Set the color of AITB to blue */
 }
 
+.navbar-expand-md .navbar-brand .aitb-logo {
+  background: url("../../../assets/images/aitb-logo.jpeg") no-repeat center
+    center;
+  background-size: contain;
+  height: 40px; /* Adjust the height as needed */
+  width: 100px; /* Adjust the width as needed */
+}
+
 .navbar-expand-md .navbar-nav .nav-item .nav-link {
   font-size: 1.1rem;
   color: #1e2579 !important;
