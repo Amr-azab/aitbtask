@@ -1,0 +1,14 @@
+const express = require("express");
+const userController = require("./controller");
+const { protect } = require("../Authentication/authcontroller");
+const { restrictTo } = require("../utlis/roleMiddleware");
+const router = express.Router();
+router.post("/signup", userController.signUp);
+router.post("/signin", userController.signIn);
+router.use(protect);
+router.get("/getMe", userController.getMe);
+router.get("/getalluser", restrictTo("Admin"), userController.getAllUsers);
+router.delete("/:id", restrictTo("Admin"), userController.deleteUser);
+router.patch("/:id/restore", restrictTo("Admin"), userController.restoreUser);
+router.post("/signout", userController.signOut);
+module.exports = router;

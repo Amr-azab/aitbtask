@@ -1,6 +1,6 @@
 /* Custom styles for header and logo */
 .custom-header {
-  background-color: #d3d3d3; /* Gray background color */
+  background-color: #033b72; /* Gray background color */
   color: #ecf0f1;
   padding: 20px;
   border-radius: 10px;
@@ -8,45 +8,36 @@
 
 .title-container {
   display: flex;
+  flex-direction: column; /* Stack logo and text vertically */
   align-items: center;
-  justify-content: center;
-  gap: 20px; /* Adjust the gap value to increase or decrease the space */
 }
 
 .logo-image {
-  background: url("../../../assets/images/aitb-logo.jpeg") no-repeat center
+  background: url("../../../assets/images/aitblogoblue.JPG") no-repeat center
     center;
   background-size: contain;
   width: 100px;
   height: 100px;
-}
-
-.aitb-logo {
-  background: url("../../../assets/images/aitb-logo.jpeg") no-repeat center
-    center; /* Replace with the actual logo path */
-  background-size: contain;
-  width: 50px;
-  height: 50px;
+  margin-bottom: 10px;
 }
 
 .title-text {
   font-family: "Arial Black", sans-serif;
   text-align: center;
-  color: #0828df; /* Match the logo color */
 }
 
-.sign-up-text {
+.welcome-text {
   font-family: "Arial Black", sans-serif;
   font-size: 28px;
-  color: #051571; /* Match the logo color */
+  color: #ecf0f1; /* Match the logo color */
 }
 
-.csm-text {
+/* .csm-text {
   font-family: "Arial Black", sans-serif;
-  font-size: 24px;
-  color: #051571; /* Match the logo color */
+  font-size: 22px;
+  color: #ffffff; 
   margin-top: -10px;
-}
+} */
 
 .input-container {
   position: relative;

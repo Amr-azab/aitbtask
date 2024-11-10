@@ -1,0 +1,104 @@
+/* Base styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+p {
+  font-size: 0.9rem;
+}
+
+/* Navbar styles */
+.navbar {
+  background-color: #033b72; /* Dark blue color */
+  color: white;
+  padding: 10px 20px;
+}
+
+.navbar .navbar-brand .aitb-logo {
+  background: url("../assets/images/aitb-logo.jpeg") no-repeat center center; /* Replace with your logo path */
+  background-size: contain;
+  height: 40px; /* Adjust the height as needed */
+  width: 100px; /* Adjust the width as needed */
+}
+
+.navbar .navbar-links {
+  display: flex;
+  gap: 1rem; /* Adjust the gap as needed */
+  align-items: center; /* Center vertically with the navbar */
+}
+
+/* Optional: Adjust spacing between icon and text */
+.navbar .navbar-links p i {
+  margin-right: 5px; /* Space between icon and text */
+}
+
+.navbar .navbar-profile {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.navbar .profile-pic {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.navbar .form-control {
+  margin-right: 10px;
+}
+
+.navbar .btn {
+  color: white;
+}
+
+/* Form styles */
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.form-control.mt-2 {
+  margin-top: 10px;
+}
+
+.btn {
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.9em;
+  margin-top: 5px;
+}
+
+/* Sign-in/up container styles */
+.sign-in-container,
+.sign-up-container {
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.footer {
+  background-color: #033b72;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}

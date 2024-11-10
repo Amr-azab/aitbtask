@@ -6,12 +6,14 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { SignUpService } from '../../services/sign-up.service';
+import { SignInComponent } from '../sign-in/sign-in.component';
 
 @Component({
   selector: 'app-sign-up',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, RouterModule],
+  imports: [ReactiveFormsModule, CommonModule, SignInComponent, RouterModule],
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.css'],
 })
@@ -40,9 +42,31 @@ export class SignUpComponent {
     return this.contactForm.get('role');
   }
 
-  onUserSubmit(): void {
+  constructor(private signUpService: SignUpService, private router: Router) {}
+
+  async onUserSubmit(): Promise<void> {
     if (this.contactForm.valid) {
-      console.log(this.contactForm.value);
+      try {
+        const response = await this.signUpService.signUp({
+          username: this.contactForm.value.username,
+          email: this.contactForm.value.email,
+          password: this.contactForm.value.password,
+          phone: this.contactForm.value.phoneNumber, // Ensure this field matches the backend validation
+          role: this.contactForm.value.role,
+        });
+        console.log('Sign-up successful', response);
+        const role = this.contactForm.value.role;
+        if (role === 'Customer') {
+          this.router.navigate(['/home']);
+        } else if (role === 'Support') {
+          this.router.navigate(['/agentconsole']);
+        }
+      } catch (error: any) {
+        console.error('Sign-up error', error);
+        alert(
+          `Sign-up failed: ${error.response?.data?.message || error.message}`
+        );
+      }
     } else {
       console.log('Form is invalid');
     }
