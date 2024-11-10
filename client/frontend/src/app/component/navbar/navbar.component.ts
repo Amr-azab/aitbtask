@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
-
+import { Router, RouterModule } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 @Component({
   selector: 'app-navbar',
   standalone: true,
@@ -8,4 +8,10 @@ import { RouterModule } from '@angular/router';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css'],
 })
-export class NavbarComponent {}
+export class NavbarComponent {
+  constructor(private authService: AuthService, private router: Router) {}
+  logout(): void {
+    this.authService.clearToken(); // Clear the token
+    this.router.navigate(['/signin']);
+  } // Navigate to sign-in page
+}

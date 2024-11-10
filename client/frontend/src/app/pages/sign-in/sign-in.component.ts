@@ -1,27 +1,31 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import {
   FormControl,
   FormGroup,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { SignInService } from '../../services/sign-in.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-sign-in',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule, RouterModule],
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.css'],
 })
-export class SignInComponent {
+export class SignInComponent implements OnInit, OnDestroy {
   signInForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', Validators.required),
     rememberMe: new FormControl(false),
   });
+
+  private signInSubscription: Subscription | null = null; // Initialize as null
+  signInState: any;
 
   get email() {
     return this.signInForm.get('email');
@@ -35,26 +39,51 @@ export class SignInComponent {
 
   constructor(private signInService: SignInService, private router: Router) {}
 
+  ngOnInit(): void {
+    // Subscribe to the sign-in state
+    this.signInSubscription = this.signInService
+      .getSignInState()
+      .subscribe((state) => {
+        if (state) {
+          this.signInState = state;
+          // Navigate based on the user role after successful sign-in
+          if (state.user) {
+            const role = state.user.role;
+            if (role === 'Customer') {
+              this.router.navigate(['/home']);
+            } else if (role === 'Support') {
+              this.router.navigate(['/agentconsole']);
+            }
+          }
+        }
+      });
+  }
+
   async onSubmit(): Promise<void> {
+    console.log('Form submission triggered');
+    console.log('Form Valid:', this.signInForm.valid);
+    console.log('Form Value:', this.signInForm.value);
+
     if (this.signInForm.valid) {
       try {
-        const response = await this.signInService.signIn(this.signInForm.value);
-        console.log('Sign-in successful', response);
-
-        // Navigate based on the user role (if applicable)
-        if (response.user.role === 'Customer') {
-          this.router.navigate(['/home']);
-        } else if (response.user.role === 'Support') {
-          this.router.navigate(['/agentconsole']);
-        }
-      } catch (error: any) {
-        console.error('Sign-in error', error);
+        await this.signInService.signIn(this.signInForm.value);
+      } catch (error) {
+        console.error('Sign-in error', error as Error); // Type assertion to Error
         alert(
-          `Sign-in failed: ${error.response?.data?.message || error.message}`
+          `Sign-in failed: ${
+            error instanceof Error ? error.message : 'Unknown error'
+          }`
         );
       }
     } else {
       console.log('Form is invalid');
+    }
+  }
+
+  ngOnDestroy(): void {
+    // Unsubscribe to prevent memory leaks
+    if (this.signInSubscription) {
+      this.signInSubscription.unsubscribe();
     }
   }
 }

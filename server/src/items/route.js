@@ -13,13 +13,13 @@ router.post(
   itemController.addItem
 );
 router.patch(
-  "/:itemId",
+  "/:itemId/update-items",
   restrictTo("Admin", "Support"),
   upload.single("photo"),
   itemController.updateItem
 );
 router.delete(
-  "/:itemId",
+  "/delete-items/:itemId",
   restrictTo("Admin", "Support"),
   itemController.deleteItem
 );

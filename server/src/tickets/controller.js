@@ -79,3 +79,33 @@ exports.viewMyTickets = catchAsync(async (req, res, next) => {
   const tickets = await ticketModel.viewMyTickets(req.user.id);
   res.status(200).json(tickets);
 });
+exports.updateMyTicket = catchAsync(async (req, res, next) => {
+  const { ticketId } = req.params;
+  const { status } = req.body;
+  const userId = req.user.id;
+
+  const updatedTicket = await ticketModel.updateMyTicket(
+    ticketId,
+    userId,
+    status
+  );
+
+  if (!updatedTicket) {
+    return next(
+      new AppError("Ticket not found or not authorized to update", 404)
+    );
+  }
+
+  res.status(200).json({
+    message: "Ticket updated successfully",
+    updatedTicket: {
+      id: updatedTicket.id,
+      guiId: updatedTicket.guiId,
+      status: updatedTicket.status,
+      description: updatedTicket.description,
+      userId: updatedTicket.user_id, // Corrected field name
+      itemId: updatedTicket.item_id, // Corrected field name
+      createdAt: updatedTicket.created_at, // Corrected field name
+    },
+  });
+});

@@ -108,3 +108,18 @@ exports.viewMyTickets = async (userId) => {
     .andWhere("tickets.isActive", 1)
     .andWhere("tickets.status", "New");
 };
+exports.updateMyTicket = async (ticketId, userId, status) => {
+  // Update the ticket status only if it belongs to the user
+  await knex("tickets")
+    .where({ id: ticketId, user_id: userId, isDeleted: 0 })
+    .update({ status });
+
+  // Select and return the updated ticket details
+  const updatedTicket = await knex("tickets")
+    .select("id", "guiId", "status", "description", "user_id", "item_id", "created_at", "updated_at")
+    .where({ id: ticketId, user_id: userId, isDeleted: 0 })
+    .first();
+
+  return updatedTicket;
+};
+

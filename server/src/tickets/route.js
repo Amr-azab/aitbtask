@@ -5,20 +5,25 @@ const { restrictTo } = require("../utlis/roleMiddleware");
 const router = express.Router();
 router.use(protect);
 router.post("/create-ticket", ticketController.createTicket);
-router.get("/:userId", ticketController.viewMyTickets);
+router.get("/mytickets/:userId", ticketController.viewMyTickets);
+router.patch("/update-my-ticket/:ticketId", ticketController.updateMyTicket);
 router.get(
   "/alltickets",
   restrictTo("Admin", "Support"),
   ticketController.viewTickets
 );
 router.patch(
-  "/:ticketId",
+  "/:ticketId/update-tickets",
   restrictTo("Admin", "Support"),
   ticketController.updateTicket
 );
-router.delete("/:ticketId", restrictTo("Admin"), ticketController.deleteTicket);
+router.delete(
+  "/delete-ticket/:ticketId",
+  restrictTo("Admin"),
+  ticketController.deleteTicket
+);
 router.patch(
-  "/:ticketId/restore",
+  "/:ticketId/restore-tickets",
   restrictTo("Admin"),
   ticketController.restoreTicket
 );

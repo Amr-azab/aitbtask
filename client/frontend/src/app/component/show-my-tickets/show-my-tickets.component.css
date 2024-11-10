@@ -1,0 +1,101 @@
+/* NavBar style */
+.navbar-expand-md {
+  background-color: #fff !important;
+}
+
+.navbar-expand-md .navbar-brand {
+  font-size: 2rem;
+  font-weight: bold;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  color: rgb(37, 37, 182); /* Set the color of AITB to blue */
+}
+
+.navbar-expand-md .navbar-nav .nav-item .nav-link {
+  font-size: 1.1rem;
+  color: #1e2579 !important;
+}
+.navbar-expand-md .navbar-nav .nav-item .nav-link:hover {
+  border-bottom: 5px solid #000;
+  transition: border-bottom 1s ease-in-out;
+}
+
+/* Form styling */
+.form-control {
+  padding-left: 2rem;
+}
+
+/* Position search icon */
+.input-group-text i {
+  color: #999;
+}
+
+.nav-link {
+  color: red;
+}
+
+.nav-link i {
+  font-size: 1.5rem; /* Increase icon size */
+  margin-right: 8px; /* Add space between icon and text */
+}
+
+.nav-item {
+  margin-right: 8rem; /* Add space between navigation items */
+}
+
+/* New Navbar Styles */
+.nav.justify-content-center {
+  background-color: #34495e; /* Custom navbar background color */
+  padding: 10px;
+  border-radius: 5px;
+}
+.card-body {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.nav-item .nav-link {
+  color: #ecf0f1; /* Custom navbar link color */
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.nav-item .nav-link i {
+  margin-right: 8px;
+  font-size: 1.2rem; /* Adjust icon size if needed */
+}
+
+.nav-item .nav-link.active {
+  background-color: #2c3e50;
+  border-radius: 5px;
+}
+
+.nav-item .nav-link:hover {
+  background-color: #2c3e50;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+.card-footer {
+  background-color: #f8f9fa; /* Optional: Adjust as needed */
+  border-top: 1px solid #e9ecef; /* Optional: Adjust as needed */
+  padding: 10px;
+}
+
+/* Responsive Design */
+/* Mobile */
+@media (max-width: 767.98px) {
+  .navbar-expand-md .navbar-nav {
+    margin-top: 20px;
+  }
+  .navbar-expand-md .navbar-nav .nav-item .nav-link {
+    text-align: center;
+    width: 20%;
+    margin: auto;
+  }
+  .navbar-expand-md .navbar-nav .nav-item .nav-link:hover {
+    border: none;
+    background-color: #000;
+    color: #fff !important;
+    border-radius: 20px;
+  }
+}

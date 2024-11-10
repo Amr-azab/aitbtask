@@ -5,18 +5,18 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class ModelService {
-  private apiUrl = 'http://localhost:8000/api/aitb/tickets/create-ticket'; // Update with your actual backend URL
+export class ShowMyTicketsService {
+  private apiUrl = 'http://localhost:8000/api/aitb/ticket/mytickets'; // Update with the correct backend URL
 
   constructor(private http: HttpClient) {}
 
-  createTicket(ticketData: any): Observable<any> {
+  getMyTickets(userId: string): Observable<any> {
     const token = localStorage.getItem('token');
     if (!token) {
       throw new Error('No token found');
     }
 
-    return this.http.post<any>(this.apiUrl, ticketData, {
+    return this.http.get<any>(`${this.apiUrl}/${userId}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

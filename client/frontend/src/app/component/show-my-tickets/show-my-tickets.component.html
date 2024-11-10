@@ -1,0 +1,33 @@
+<!-- <div class="col-md-4 col-sm-12 my-2">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">My Open Tickets</h5>
+      <p class="card-text">INC. - Cannot open Microsoft Office</p>
+      <p class="card-text">REQ. - Laptop request</p>
+      <p class="card-text">REQ. - Mouse request</p>
+      <hr />
+      <p>3 out of 165</p>
+    </div>
+  </div>
+</div> -->
+<div>
+  <div class="card">
+    <div class="card-header">
+      <h5 class="card-title">My Open Tickets</h5>
+    </div>
+    <div class="card-body" style="max-height: 300px; overflow-y: auto">
+      <div *ngFor="let ticket of tickets">
+        <p class="card-text"><strong>ID:</strong> {{ ticket.guiId }}</p>
+        <p class="card-text"><strong>Item:</strong> {{ ticket.item_name }}</p>
+        <p class="card-text"><strong>Status:</strong> {{ ticket.status }}</p>
+        <p class="card-text">
+          <strong>Description:</strong> {{ ticket.description }}
+        </p>
+        <hr />
+      </div>
+    </div>
+    <div class="card-footer">
+      <p>{{ tickets.length }} tickets found</p>
+    </div>
+  </div>
+</div>

@@ -1,22 +1,35 @@
 import { Injectable } from '@angular/core';
-import axios from 'axios';
+import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SignInService {
-  private apiUrl = 'http://localhost:8000/api/customer'; // Replace with your backend URL
+  private apiUrl = 'http://localhost:8000/api/aitb/user';
+  private signInState = new BehaviorSubject<any>(null);
 
-  constructor() {}
+  constructor(private authService: AuthService, private http: HttpClient) {}
 
-  async signIn(data: any): Promise<any> {
-    try {
-      const response = await axios.post(`${this.apiUrl}/signin`, data);
-      return response.data;
-    } catch (error: any) {
-      throw new Error(
-        `Sign-in error: ${error.response?.data?.message || error.message}`
-      );
-    }
+  getSignInState(): Observable<any> {
+    return this.signInState.asObservable();
+  }
+
+  signIn(data: any): void {
+    this.http.post(`${this.apiUrl}/signin`, data).subscribe(
+      (response: any) => {
+        this.authService.saveToken(response.token); // Save the token
+        this.signInState.next(response); // Update the sign-in state
+      },
+      (error) => {
+        this.signInState.next({
+          error: error.error?.message || error.message,
+        });
+        throw new Error(
+          `Sign-in error: ${error.error?.message || error.message}`
+        );
+      }
+    );
   }
 }

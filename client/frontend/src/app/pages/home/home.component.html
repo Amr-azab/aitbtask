@@ -2,7 +2,7 @@
 
 <section class="showcase text-center text-white">
   <nav class="navbar">
-    <h2 class="navbar-brand">Hello Amr, How can we help?</h2>
+    <h2 class="navbar-brand">Hello {{ username }}, How can we help?</h2>
     <div class="container-fluid d-flex flex-column align-items-start">
       <form class="d-flex w-100 mt-2 bg-body-tertiary" role="search">
         <div class="input-group">
@@ -27,7 +27,12 @@
 <!-- Navigation Bar -->
 <ul class="nav justify-content-center mt-4">
   <li class="nav-item">
-    <a class="nav-link active" aria-current="page" href="#">
+    <a
+      class="nav-link active"
+      aria-current="page"
+      href="#"
+      routerLink="/listofitems"
+    >
       <i class="fas fa-edit"></i> Create Request
     </a>
   </li>
@@ -49,16 +54,7 @@
 <section>
   <div class="row mt-3">
     <div class="col-md-4 col-sm-12 my-2">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">My Open Tickets</h5>
-          <p class="card-text">INC. - Cannot open Microsoft Office</p>
-          <p class="card-text">REQ. - Laptop request</p>
-          <p class="card-text">REQ. - Mouse request</p>
-          <hr />
-          <p>3 out of 165</p>
-        </div>
-      </div>
+      <app-show-my-tickets></app-show-my-tickets>
     </div>
     <div class="col-md-4 col-sm-12 my-2">
       <div class="card">
