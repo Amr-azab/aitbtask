@@ -3,7 +3,7 @@
   <div class="container">
     <div class="row mt-3" *ngIf="items.length > 0; else noItems">
       <div class="col-md-4 col-sm-12 my-2" *ngFor="let item of items">
-        <div class="card" (click)="openModal(item)">
+        <div class="card">
           <div class="card-header">
             <h5 class="card-title">{{ item.name }}</h5>
           </div>

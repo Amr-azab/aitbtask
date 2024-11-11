@@ -14,7 +14,7 @@ import { ViewticketComponent } from '../../component/viewticket/viewticket.compo
     ListOfItemsComponent,
     NavbarconsoleComponent,
     NavbarverticalComponent,
-    ViewticketComponent
+    ViewticketComponent,
   ],
   templateUrl: './agent-console.component.html',
   styleUrl: './agent-console.component.css',

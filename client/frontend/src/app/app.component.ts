@@ -15,6 +15,7 @@ import { NavbarconsoleComponent } from './component/navbarconsole/navbarconsole.
 import { NavbarverticalComponent } from './component/navbarvertical/navbarvertical.component';
 import { ViewticketComponent } from './component/viewticket/viewticket.component';
 import { SignOutComponent } from './component/sign-out/sign-out.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-root',
@@ -38,6 +39,9 @@ import { SignOutComponent } from './component/sign-out/sign-out.component';
     NavbarverticalComponent,
     ViewticketComponent,
     SignOutComponent,
+    ModelComponent,
+    FormsModule,
+    NgbModule,
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'], // Ensure styleUrls is correctly written

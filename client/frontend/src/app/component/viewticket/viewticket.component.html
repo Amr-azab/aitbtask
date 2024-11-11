@@ -12,65 +12,19 @@
             <th scope="col">Opened</th>
             <th scope="col">Customer</th>
             <th scope="col">Category</th>
-            <th scope="col">Assigned Group</th>
-            <th scope="col">Assignee</th>
+            <th scope="col">Status</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>0957746K JLY</td>
-            <td>High</td>
-            <td>Issue with software installation</td>
-            <td>John Doe</td>
-            <td>Customer A</td>
-            <td>BOM-Rizz-052</td>
-            <td>Support Group 1</td>
-            <td>Jane Smith</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>0957746K JLY</td>
-            <td>Medium</td>
-            <td>Network connectivity issue</td>
-            <td>Jane Roe</td>
-            <td>Customer B</td>
-            <td>BOM-Rizz-053</td>
-            <td>Support Group 2</td>
-            <td>John Smith</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>0957746K JLY</td>
-            <td>Low</td>
-            <td>Request for new hardware</td>
-            <td>Richard Roe</td>
-            <td>Customer C</td>
-            <td>BOM-Rizz-054</td>
-            <td>Support Group 3</td>
-            <td>Jane Doe</td>
-          </tr>
-          <tr>
-            <th scope="row">4</th>
-            <td>0957746K JLY</td>
-            <td>High</td>
-            <td>Issue with email services</td>
-            <td>John Doe</td>
-            <td>Customer D</td>
-            <td>BOM-Rizz-055</td>
-            <td>Support Group 4</td>
-            <td>Jane Smith</td>
-          </tr>
-          <tr>
-            <th scope="row">5</th>
-            <td>0957746K JLY</td>
-            <td>Medium</td>
-            <td>Problem with database access</td>
-            <td>Jane Roe</td>
-            <td>Customer E</td>
-            <td>BOM-Rizz-056</td>
-            <td>Support Group 5</td>
-            <td>John Smith</td>
+          <tr *ngFor="let ticket of tickets; let i = index">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>{{ ticket.guiId }}</td>
+            <td>{{ ticket.priority }}</td>
+            <td>{{ ticket.description }}</td>
+            <td>{{ ticket.customer }}</td>
+            <td>{{ ticket.item }}</td>
+            <td>{{ ticket.status }}</td>
+            <td>{{ ticket.created_at | date : "medium" }}</td>
           </tr>
         </tbody>
       </table>
