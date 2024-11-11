@@ -1,12 +1,17 @@
 const itemModel = require("./model");
-const AppError = require("../utlis/appError");
-const catchAsync = require("../utlis/catchAsync");
+const AppError = require("../../utlis/appError");
+const catchAsync = require("../../utlis/catchAsync");
 const jwt = require("jsonwebtoken");
-const generateToken = require("../utlis/generateToken");
-const upload = require("../utlis/upload");
+const itemValidation = require("./validations/createItem");
+const generateToken = require("../../utlis/generateToken");
+const upload = require("../../utlis/upload");
 exports.addItem = catchAsync(async (req, res, next) => {
   const { name, price, description } = req.body;
   const imagePath = req.file ? `/images/${req.file.filename}` : null;
+  const isItemValid = itemValidation.isValidItem(name, price);
+  if (!isItemValid) {
+    return next(new AppError("Invalid input data", 400));
+  }
   const newItem = await itemModel.addItem(name, price, description, imagePath);
   res.status(201).json({
     message: "Item added successfully",
@@ -51,6 +56,10 @@ exports.updateItem = catchAsync(async (req, res, next) => {
   const { itemId } = req.params;
   const { name, price, description } = req.body;
   const imagePath = req.file ? `/images/${req.file.filename}` : null;
+  const isItemValid = itemValidation.isValidItem(name, price);
+  if (!isItemValid) {
+    return next(new AppError("Invalid input data", 400));
+  }
   const updatedItem = await itemModel.updateItem(itemId, {
     name,
     price,

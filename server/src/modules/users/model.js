@@ -1,13 +1,10 @@
-const knex = require("../../db/knex");
+const knex = require("../../../db/knex");
 const bcrypt = require("bcrypt");
 const crypto = require("crypto");
-const generateGuiId = require("../utlis/generateGuiId");
-// Generate a custom unique ID (length 20)
+const generateGuiId = require("../../utlis/generateGuiId");
 const generateUniqueId = () => {
   return crypto.randomBytes(10).toString("hex"); // Generates a 20-character alphanumeric string
 };
-// Customer sign-up
-// Sign-up function with role detection
 exports.signUp = async (
   username,
   email,
@@ -44,13 +41,10 @@ exports.signUp = async (
 
   return userId;
 };
-
-// Customer sign-in
-// Customer sign-in
 exports.signIn = async (email, password) => {
   const user = await knex("users")
     .select("id", "username", "email", "password", "role") // Ensure you are selecting the password as well
-    .where({ email, role: "Customer", isDeleted: 0 })
+    .where({ email, isDeleted: 0 })
     .first();
 
   if (!user) {
@@ -72,57 +66,30 @@ exports.selectUserById = async (userId) => {
     .where("id", userId)
     .first(); // Fetch the first result (or null if not found)
 };
-
-// View all active items
-exports.viewItems = async () => {
-  return await knex("items")
-    .select("id", "name", "price", "description", "photo")
-    .where({ isActive: 1, isDeleted: 0 });
+// Admin
+// Select all users
+exports.selectUsers = async () => {
+  return await knex
+    .select("id", "username", "email", "role", "isActive", "isDeleted")
+    .from("users")
+    .where("role", "!=", "Admin"); // Exclude other admins if needed
 };
 
-// Create a ticket for a specific item
-exports.createTicket = async (userId, itemId, description) => {
-  // Check if the item is active
-  const item = await knex("items")
-    .select("isActive")
-    .where({ id: itemId, isActive: 1 })
-    .first();
+// Delete a user by setting isDeleted and isActive flags
+exports.deleteUser = async (id) => {
+  return knex("users")
+    .update({
+      isDeleted: 1,
+      isActive: 0,
+    })
+    .where("id", id);
+};
 
-  if (!item) {
-    throw new Error("Item is not active. Ticket cannot be created.");
-  }
-  // const gGuiId = await generateUniqueId("ticket", "REQ");
-  // Insert new ticket
-  const ticketId = generateUniqueId();
-  const guiId = await generateGuiId("tickets", "REQ");
-  await knex("tickets")
-    .insert({
-      id: ticketId,
-      guiId: guiId,
-      user_id: userId,
-      item_id: itemId,
-      status: "New",
-      description: description,
+exports.restoreUser = async (id) => {
+  return knex("users")
+    .update({
+      isDeleted: 0,
       isActive: 1,
     })
-    .returning("id");
-
-  return ticketId;
-};
-
-// View tickets created by the customer
-exports.viewMyTickets = async (userId) => {
-  return await knex("tickets")
-    .join("items", "tickets.item_id", "items.id")
-    .select(
-      "tickets.id as ticket_id",
-      "tickets.guiId",
-      "items.name as item_name",
-      "tickets.status",
-      "tickets.description",
-      "tickets.created_at"
-    )
-    .where("tickets.user_id", userId)
-    .andWhere("tickets.isActive", 1)
-    .andWhere("tickets.status", "New");
+    .where("id", id);
 };

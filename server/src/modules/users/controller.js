@@ -1,11 +1,11 @@
 const userModel = require("./model");
-const AppError = require("../utlis/appError"); // Adjust path as needed
-const catchAsync = require("../utlis/catchAsync"); // Adjust path as needed
+const AppError = require("../../utlis/appError"); // Adjust path as needed
+const catchAsync = require("../../utlis/catchAsync"); // Adjust path as needed
 const jwt = require("jsonwebtoken");
-const signUpvalidation = require("../validations/signup");
-const signInvalidation = require("../validations/signin");
+const signUpvalidation = require("./validations/signup");
+const signInvalidation = require("./validations/signin");
 const bcrypt = require("bcrypt");
-const generateToken = require("../utlis/generateToken");
+const generateToken = require("../../utlis/generateToken");
 exports.signUp = catchAsync(async (req, res, next) => {
   const { username, email, password, phone, role } = req.body;
   const isValidSignUp = signUpvalidation.isValid(

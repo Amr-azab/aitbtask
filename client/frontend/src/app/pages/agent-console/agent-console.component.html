@@ -1,29 +1,15 @@
-<!-- <app-navbarconsole></app-navbarconsole> -->
-
-<!-- <app-list-of-items></app-list-of-items> -->
-<!-- <nav class="nav flex-column">
-  <a class="nav-link active" aria-current="page" href="#">Active</a>
-  <a class="nav-link" href="#">Link</a>
-  <a class="nav-link" href="#">Link</a>
-  <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-</nav> -->
-<!-- <app-navbarvertical></app-navbarvertical> -->
-<!-- <app-viewticket></app-viewticket> -->
 <div class="container-fluid">
   <div class="row">
-    <!-- Navbar Console at the top -->
     <div class="col-12">
       <app-navbarconsole></app-navbarconsole>
     </div>
   </div>
   <div class="row">
-    <!-- Vertical Navbar on the left -->
     <div class="col-md-3 col-sm-4">
       <app-navbarvertical></app-navbarvertical>
     </div>
-    <!-- Main Content for Viewing Tickets -->
     <div class="col-md-9 col-sm-8">
-      <app-viewticket></app-viewticket>
+      <router-outlet></router-outlet>
     </div>
   </div>
 </div>

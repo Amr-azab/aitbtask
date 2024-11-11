@@ -1,8 +1,8 @@
 const ticketModel = require("./model");
-const AppError = require("../utlis/appError");
-const catchAsync = require("../utlis/catchAsync");
+const AppError = require("../../utlis/appError");
+const catchAsync = require("../../utlis/catchAsync");
 const jwt = require("jsonwebtoken");
-const generateToken = require("../utlis/generateToken");
+const generateToken = require("../../utlis/generateToken");
 exports.viewTickets = catchAsync(async (req, res, next) => {
   const tickets = await ticketModel.viewTickets();
   res.status(200).json(tickets);
@@ -63,16 +63,30 @@ exports.restoreTicket = catchAsync(async (req, res, next) => {
 
   res.status(200).json({ message: "Ticket restored successfully" });
 });
-exports.createTicket = catchAsync(async (req, res, next) => {
-  const { itemId, description } = req.body;
+// exports.createTicket = catchAsync(async (req, res, next) => {
+//   const { itemId, description } = req.body;
 
+//   const ticketId = await ticketModel.createTicket(
+//     req.user.id,
+//     itemId,
+//     description
+//   );
+//   res.status(201).json({ message: "Ticket created successfully", ticketId });
+// });
+exports.createTicket = catchAsync(async (req, res, next) => {
+  const { itemId } = req.params; // Get itemId from the URL
+  const { description } = req.body; // Optional description from the request body
+
+  // Call the model function with req.user.id (user ID from token), itemId, and optional description
   const ticketId = await ticketModel.createTicket(
     req.user.id,
     itemId,
     description
   );
+
   res.status(201).json({ message: "Ticket created successfully", ticketId });
 });
+
 exports.viewMyTickets = catchAsync(async (req, res, next) => {
   // const { userId } = req.params;
 
@@ -106,6 +120,25 @@ exports.updateMyTicket = catchAsync(async (req, res, next) => {
       userId: updatedTicket.user_id, // Corrected field name
       itemId: updatedTicket.item_id, // Corrected field name
       createdAt: updatedTicket.created_at, // Corrected field name
+    },
+  });
+});
+exports.viewSingleTicket = catchAsync(async (req, res, next) => {
+  const { ticketId } = req.params;
+
+  const ticket = await ticketModel.getTicketById(ticketId);
+
+  if (!ticket) {
+    return next(new AppError("Ticket not found", 404));
+  }
+
+  res.status(200).json({
+    ticket: {
+      guiId: ticket.guiId,
+      username: ticket.username,
+      phone: ticket.phone,
+      email: ticket.email,
+      status: ticket.status,
     },
   });
 });

@@ -51,7 +51,7 @@ export class SignInComponent implements OnInit, OnDestroy {
             const role = state.user.role;
             if (role === 'Customer') {
               this.router.navigate(['/home']);
-            } else if (role === 'Support') {
+            } else if (role === 'Support' || role === 'Admin') {
               this.router.navigate(['/agentconsole']);
             }
           }

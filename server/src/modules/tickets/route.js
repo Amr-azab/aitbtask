@@ -1,10 +1,10 @@
 const express = require("express");
 const ticketController = require("./controller");
-const { protect } = require("../Authentication/authcontroller");
-const { restrictTo } = require("../utlis/roleMiddleware");
+const { protect } = require("../../Authentication/authcontroller");
+const { restrictTo } = require("../../utlis/roleMiddleware");
 const router = express.Router();
 router.use(protect);
-router.post("/create-ticket", ticketController.createTicket);
+router.post("/create-ticket/:itemId", ticketController.createTicket);
 router.get("/mytickets/:userId", ticketController.viewMyTickets);
 router.patch("/update-my-ticket/:ticketId", ticketController.updateMyTicket);
 router.get(
@@ -27,4 +27,10 @@ router.patch(
   restrictTo("Admin"),
   ticketController.restoreTicket
 );
+router.get(
+  "/request-ticket/:ticketId",
+  restrictTo("Admin", "Support"),
+  ticketController.viewSingleTicket
+);
+
 module.exports = router;

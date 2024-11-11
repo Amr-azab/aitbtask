@@ -16,7 +16,10 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let ticket of tickets; let i = index">
+          <tr
+            *ngFor="let ticket of tickets; let i = index"
+            (click)="navigateToUpdateRequest(ticket.ticket_id)"
+          >
             <th scope="row">{{ i + 1 }}</th>
             <td>{{ ticket.guiId }}</td>
             <td>{{ ticket.priority }}</td>

@@ -8,6 +8,7 @@ import { UpdateRequestComponent } from './pages/update-request/update-request.co
 import { ModelComponent } from './component/model/model.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { AuthGuard } from './auth.guard';
+import { ViewticketComponent } from './component/viewticket/viewticket.component';
 
 export const routes: Routes = [
   { path: '', component: SignUpComponent },
@@ -17,15 +18,14 @@ export const routes: Routes = [
     path: 'agentconsole',
     component: AgentConsoleComponent,
     canActivate: [AuthGuard],
+    children: [
+      { path: '', component: ViewticketComponent }, // Ensure this is set as the default
+      { path: 'updateConsole/:ticketId', component: UpdateRequestComponent },
+    ],
   },
   {
     path: 'listofitems',
     component: ListOfItemsComponent,
-    canActivate: [AuthGuard],
-  },
-  {
-    path: 'updateConsole',
-    component: UpdateRequestComponent,
     canActivate: [AuthGuard],
   },
   { path: 'model', component: ModelComponent, canActivate: [AuthGuard] },

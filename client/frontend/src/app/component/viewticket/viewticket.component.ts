@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TicketService } from '../../services/viewticket.service'; // Correct the service import
+import { TicketService } from '../../services/viewticket.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-viewticket',
@@ -12,7 +13,10 @@ import { TicketService } from '../../services/viewticket.service'; // Correct th
 export class ViewticketComponent implements OnInit {
   tickets: any[] = [];
 
-  constructor(private viewticketService: TicketService) {} // Correct the service injection
+  constructor(
+    private viewticketService: TicketService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.loadTickets();
@@ -20,13 +24,16 @@ export class ViewticketComponent implements OnInit {
 
   loadTickets(): void {
     this.viewticketService.getAllTickets().subscribe(
-      // Correct the method name
       (response: any) => {
-        this.tickets = response; // Adjust this if your response structure is different
+        this.tickets = response;
       },
       (error: any) => {
         console.error('Failed to load tickets:', error);
       }
     );
+  }
+
+  navigateToUpdateRequest(ticketId: string): void {
+    this.router.navigate(['agentconsole/updateConsole', ticketId]);
   }
 }

@@ -1,4 +1,4 @@
-const knex = require("../../db/knex");
+const knex = require("../../../db/knex");
 const bcrypt = require("bcrypt");
 const crypto = require("crypto");
 const generateUniqueId = () => {
@@ -116,10 +116,31 @@ exports.updateMyTicket = async (ticketId, userId, status) => {
 
   // Select and return the updated ticket details
   const updatedTicket = await knex("tickets")
-    .select("id", "guiId", "status", "description", "user_id", "item_id", "created_at", "updated_at")
+    .select(
+      "id",
+      "guiId",
+      "status",
+      "description",
+      "user_id",
+      "item_id",
+      "created_at",
+      "updated_at"
+    )
     .where({ id: ticketId, user_id: userId, isDeleted: 0 })
     .first();
 
   return updatedTicket;
 };
-
+exports.getTicketById = async (ticketId) => {
+  return await knex("tickets")
+    .join("users", "tickets.user_id", "users.id")
+    .select(
+      "tickets.guiId",
+      "users.username",
+      "users.phone",
+      "users.email",
+      "tickets.status"
+    )
+    .where("tickets.id", ticketId)
+    .first();
+};

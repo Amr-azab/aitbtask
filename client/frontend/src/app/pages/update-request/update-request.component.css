@@ -7,7 +7,18 @@
   color: white;
   padding: 1rem;
   border-radius: 5px;
-  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.profile-info {
+  display: flex;
+  align-items: center;
+}
+
+.profile-icon {
+  font-size: 2.5rem; /* Size of the profile icon */
 }
 
 .form-label {
@@ -18,27 +29,6 @@
   background-color: #f8f9fa;
   padding: 10px;
   border-radius: 5px;
-}
-
-.sla-bar {
-  display: flex;
-  height: 20px;
-}
-
-.sla-segment {
-  flex: 1;
-}
-
-.bg-success {
-  background-color: #28a745;
-}
-
-.bg-warning {
-  background-color: #ffc107;
-}
-
-.bg-danger {
-  background-color: #dc3545;
 }
 
 .btn-primary {

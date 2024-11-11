@@ -1,4 +1,4 @@
-const knex = require("../../db/knex");
+const knex = require("../../../db/knex");
 const bcrypt = require("bcrypt");
 const crypto = require("crypto");
 const generateUniqueId = () => {
@@ -79,3 +79,4 @@ exports.restoreItem = async (itemId) => {
     })
     .where("id", itemId);
 };
+

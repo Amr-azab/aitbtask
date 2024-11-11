@@ -1,7 +1,7 @@
 const express = require("express");
 const userController = require("./controller");
-const { protect } = require("../Authentication/authcontroller");
-const { restrictTo } = require("../utlis/roleMiddleware");
+const { protect } = require("../../Authentication/authcontroller");
+const { restrictTo } = require("../../utlis/roleMiddleware");
 const router = express.Router();
 router.post("/signup", userController.signUp);
 router.post("/signin", userController.signIn);
