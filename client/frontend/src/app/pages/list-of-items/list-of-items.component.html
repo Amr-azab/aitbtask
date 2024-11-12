@@ -22,6 +22,9 @@
           </div>
           <div class="card-footer">
             <p class="btn btn-outline-dark mx-2">{{ item.price }} USD</p>
+            <button class="btn btn-primary" (click)="openModal(item.id)">
+              Request
+            </button>
           </div>
         </div>
       </div>
@@ -30,4 +33,7 @@
       <p>No items found.</p>
     </ng-template>
   </div>
+
+  <!-- Include the modal component and pass the itemId -->
+  <app-model *ngIf="selectedItemId" [itemId]="selectedItemId"></app-model>
 </section>

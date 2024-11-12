@@ -1,17 +1,18 @@
-<div class="modal" tabindex="-1">
+<div class="modal" tabindex="-1" id="createTicketModal">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Request For: UserName</h5>
+        <h5 class="modal-title">Request For: {{ user.username }}</h5>
         <button
           type="button"
           class="btn-close"
           data-bs-dismiss="modal"
           aria-label="Close"
+          (click)="closeModal()"
         ></button>
       </div>
       <div class="modal-body">
-        <form>
+        <form [formGroup]="createTicketForm" (ngSubmit)="createTicket()">
           <div class="mb-3">
             <label for="email" class="form-label">Email:</label>
             <div class="d-flex align-items-center">
@@ -19,9 +20,10 @@
                 type="email"
                 class="form-control"
                 id="email"
-                value="username@email.com"
+                formControlName="email"
+                [disabled]="true"
+                [value]="user.email"
               />
-              <a href="#" class="edit-link ms-2">Edit</a>
             </div>
           </div>
           <div class="mb-3">
@@ -31,18 +33,33 @@
                 type="tel"
                 class="form-control"
                 id="phone"
-                value="212-55-4545"
+                formControlName="phone"
+                [disabled]="true"
+                [value]="user.phone"
               />
-              <a href="#" class="edit-link ms-2">Edit</a>
             </div>
           </div>
+          <div class="mb-3">
+            <label for="description" class="form-label">Description:</label>
+            <textarea
+              class="form-control"
+              id="description"
+              formControlName="description"
+              rows="3"
+            ></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          data-bs-dismiss="modal"
+          (click)="closeModal()"
+        >
           Save and close
         </button>
-        <button type="button" class="btn btn-primary">Submit</button>
       </div>
     </div>
   </div>
