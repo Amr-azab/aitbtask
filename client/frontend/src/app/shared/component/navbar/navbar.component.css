@@ -1,0 +1,62 @@
+/* Styling the navbar */
+.navbar-expand-md {
+  background-color: #fff !important;
+  box-shadow: 0 4px 2px -2px gray;
+}
+
+.navbar-expand-md .navbar-brand {
+  font-size: 2rem;
+  font-weight: bold;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  color: rgb(37, 37, 182); /* Set the color of AITB to blue */
+}
+
+.navbar-expand-md .navbar-brand .aitb-logo {
+  background: url("../../../core/assets/images/aitb-logo.jpeg") no-repeat center
+    center;
+  background-size: contain;
+  height: 40px; /* Adjust the height as needed */
+  width: 100px; /* Adjust the width as needed */
+}
+
+.navbar-expand-md .navbar-nav .nav-item .nav-link {
+  font-size: 1.1rem;
+  color: #1e2579 !important;
+  display: flex;
+  align-items: center;
+  gap: 5px; /* Add space between icon and text */
+}
+
+.navbar-expand-md .navbar-nav .nav-item .nav-link:hover {
+  border-bottom: 2px solid #1e2579;
+  transition: border-bottom 0.3s ease-in-out;
+}
+
+.navbar-toggler-icon {
+  color: #1e2579;
+}
+
+.navbar-nav {
+  margin-left: auto; /* Align items to the right */
+}
+
+.nav-item {
+  margin-right: 15px; /* Add space between navigation items */
+}
+
+/* Media query for responsive design */
+@media (max-width: 767.98px) {
+  .navbar-expand-md .navbar-nav {
+    margin-top: 20px;
+  }
+  .navbar-expand-md .navbar-nav .nav-item .nav-link {
+    text-align: center;
+    width: 100%;
+  }
+  .navbar-expand-md .navbar-nav .nav-item .nav-link:hover {
+    border: none;
+    background-color: #1e2579;
+    color: #fff !important;
+    border-radius: 20px;
+  }
+}

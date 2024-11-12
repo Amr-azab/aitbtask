@@ -1,0 +1,12 @@
+.error-photo {
+  background: url("../../../assets/images/pagenotfound.JPG") no-repeat center;
+  background-size: contain;
+  width: 40rem;
+  height: 40rem;
+  margin: 0 auto; /* Center the image horizontally */
+}
+
+.error-message {
+  font-size: 2rem;
+  text-align: center; /* Center the text */
+}

@@ -1,0 +1,58 @@
+<section class="request-form my-5">
+  <div class="container">
+    <div
+      class="form-header bg-dark text-white p-3 d-flex align-items-center justify-content-between"
+    >
+      <h2>{{ ticketForm.get("guiId")?.value }}</h2>
+      <div class="profile-info d-flex align-items-center">
+        <i class="fas fa-user-circle profile-icon me-3"></i>
+      </div>
+    </div>
+    <form [formGroup]="ticketForm" (ngSubmit)="updateTicket()" class="mt-4">
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label class="form-label">Name:</label>
+          <p class="form-control-plaintext">
+            {{ ticketForm.get("username")?.value }}
+          </p>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Email:</label>
+          <p class="form-control-plaintext">
+            {{ ticketForm.get("email")?.value }}
+          </p>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label class="form-label">Phone:</label>
+          <p class="form-control-plaintext">
+            {{ ticketForm.get("phone")?.value }}
+          </p>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Status:</label>
+          <select class="form-select" formControlName="status">
+            <option value="new ">New</option>
+            <option value="resolved">Resolved</option>
+            <option value="canceled">Canceled</option>
+          </select>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Description:</label>
+        <textarea
+          class="form-control"
+          formControlName="description"
+          rows="3"
+        ></textarea>
+      </div>
+      <div class="button-group end">
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="reset" class="btn btn-secondary" (click)="loadTicket()">
+          Reset
+        </button>
+      </div>
+    </form>
+  </div>
+</section>

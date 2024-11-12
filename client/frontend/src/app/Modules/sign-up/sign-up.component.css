@@ -1,0 +1,143 @@
+/* Custom styles for header and logo */
+.custom-header {
+  background-color: #033b72; /* Gray background color */
+  color: #ecf0f1;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.title-container {
+  display: flex;
+  flex-direction: column; /* Stack logo and text vertically */
+  align-items: center;
+}
+
+.logo-image {
+  background: url("../../core/assets/images/aitblogoblue.JPG") no-repeat center
+    center;
+  background-size: contain;
+  width: 100px;
+  height: 100px;
+  margin-bottom: 10px;
+}
+.custom-blue {
+  color: #007bff; /* Blue text */
+  border-color: #007bff; /* Blue border */
+}
+.custom-blue:hover {
+  color: #ffffff; /* White text on hover */
+  background-color: #007bff; /* Blue background on hover */
+}
+
+.title-text {
+  font-family: "Arial Black", sans-serif;
+  text-align: center;
+}
+
+.welcome-text {
+  font-family: "Arial Black", sans-serif;
+  font-size: 28px;
+  color: #ecf0f1; /* Match the logo color */
+}
+
+/* .csm-text {
+  font-family: "Arial Black", sans-serif;
+  font-size: 22px;
+  color: #ffffff; 
+  margin-top: -10px;
+} */
+
+.input-container {
+  position: relative;
+}
+
+.input-container .error-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: red;
+}
+
+.invalid {
+  border: 1px solid red;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.9em;
+  margin-top: 5px;
+}
+.invalid {
+  border: 1px solid red;
+}
+.is-invalid {
+  border-color: red;
+}
+
+.invalid-feedback {
+  display: block;
+  color: red;
+}
+
+/* Additional CSS for overall styling */
+body {
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  max-width: 800px;
+  margin: auto;
+}
+
+.header {
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.form-control.mt-2 {
+  margin-top: 10px;
+}
+
+.btn {
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+/* New styles for the sign-up image */
+.signup-image {
+  background: url("../../core/assets/images/callcenter.jpg") no-repeat center
+    center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  border-radius: 10px;
+}
+
+/* Styles for the sign-in link */
+.signin-link {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.signin-link a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.signin-link a:hover {
+  text-decoration: underline;
+}

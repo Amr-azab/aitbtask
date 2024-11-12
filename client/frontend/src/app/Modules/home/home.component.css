@@ -1,0 +1,129 @@
+/* NavBar style */
+.navbar-expand-md {
+  background-color: #fff !important;
+}
+
+.navbar-expand-md .navbar-brand {
+  font-size: 2rem;
+  font-weight: bold;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  color: rgb(37, 37, 182); /* Set the color of AITB to blue */
+}
+
+.navbar-expand-md .navbar-nav .nav-item .nav-link {
+  font-size: 1.1rem;
+  color: #1e2579 !important;
+}
+.navbar-expand-md .navbar-nav .nav-item .nav-link:hover {
+  border-bottom: 5px solid #000;
+  transition: border-bottom 1s ease-in-out;
+}
+.showcase {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2)),
+    url("../../core/assets/images/agent.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 70vh; /* Adjust to limit the height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.showcase h2 {
+  color: #fff;
+  font-size: 2rem;
+  font-weight: bolder;
+  text-shadow: 0.4px 0.4px 0.4px #ccc;
+}
+
+/* Form styling */
+.form-control {
+  padding-left: 2rem;
+}
+
+/* Position search icon */
+.input-group-text i {
+  color: #999;
+}
+
+.nav-link {
+  color: red;
+}
+
+.nav-link i {
+  font-size: 1.5rem; /* Increase icon size */
+  margin-right: 8px; /* Add space between icon and text */
+}
+
+.nav-item {
+  margin-right: 8rem; /* Add space between navigation items */
+}
+
+/* New Navbar Styles */
+
+.nav.justify-content-center {
+  background-color: #34495e; /* Custom navbar background color */
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.nav-item .nav-link {
+  color: #ecf0f1; /* Custom navbar link color */
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.nav-item .nav-link i {
+  margin-right: 8px;
+  font-size: 2rem; /* Increase icon size */
+  color: #ff7300; /* Set the icon color to orange */
+}
+
+.nav-item .nav-link.active {
+  background-color: #2c3e50;
+  border-radius: 5px;
+}
+
+.nav-item .nav-link:hover {
+  background-color: #2c3e50;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+/* Custom styles for card header, body, and footer */
+.card-header {
+  background-color: #f8f9fa; /* Optional: Adjust as needed */
+  border-bottom: 1px solid #e9ecef; /* Optional: Adjust as needed */
+  padding: 10px;
+}
+
+.card-body {
+  padding: 10px;
+}
+
+.card-footer {
+  background-color: #f8f9fa; /* Optional: Adjust as needed */
+  border-top: 1px solid #e9ecef; /* Optional: Adjust as needed */
+  padding: 10px;
+}
+
+/* Responsive Design */
+/* Mobile */
+@media (max-width: 767.98px) {
+  .navbar-expand-md .navbar-nav {
+    margin-top: 20px;
+  }
+  .navbar-expand-md .navbar-nav .nav-item .nav-link {
+    text-align: center;
+    width: 20%;
+    margin: auto;
+  }
+  .navbar-expand-md .navbar-nav .nav-item .nav-link:hover {
+    border: none;
+    background-color: #000;
+    color: #fff !important;
+    border-radius: 20px;
+  }
+}

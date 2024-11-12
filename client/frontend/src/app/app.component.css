@@ -18,7 +18,7 @@ p {
 }
 
 .navbar .navbar-brand .aitb-logo {
-  background: url("../assets/images/aitb-logo.jpeg") no-repeat center center; /* Replace with your logo path */
+  background: url("./core/assets/images/aitb-logo.jpeg") no-repeat center center; /* Replace with your logo path */
   background-size: contain;
   height: 40px; /* Adjust the height as needed */
   width: 100px; /* Adjust the width as needed */

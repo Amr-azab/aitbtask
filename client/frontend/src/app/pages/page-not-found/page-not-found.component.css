@@ -1,9 +1,0 @@
-.error-photo {
-  background: url("../../../assets/images/notfound.jpg") no-repeat center;
-  background-size: contain;
-  width: 40rem;
-  height: 40rem;
-}
-.error-message {
-  font-size: 2rem;
-}

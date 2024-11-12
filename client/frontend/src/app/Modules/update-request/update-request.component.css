@@ -1,0 +1,56 @@
+.request-form {
+  margin-top: 30px;
+}
+
+.form-header {
+  background-color: #033b72; /* Dark blue background color */
+  color: white;
+  padding: 1rem;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.profile-info {
+  display: flex;
+  align-items: center;
+}
+
+.profile-icon {
+  font-size: 2.5rem; /* Size of the profile icon */
+}
+
+.form-label {
+  font-weight: bold;
+}
+
+.form-control-plaintext {
+  background-color: #f8f9fa;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.btn-primary {
+  background-color: #0056b3;
+  border: none;
+  /* margin-right: 50rem; */
+}
+
+.btn-primary:hover {
+  background-color: #004494;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  border: none;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+}
+.button-group {
+  display: flex;
+  justify-content: space-between; /* Spread buttons across the available space */
+  gap: 10px; /* Space between buttons */
+}

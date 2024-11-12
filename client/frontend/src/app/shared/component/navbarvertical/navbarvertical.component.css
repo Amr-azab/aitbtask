@@ -1,0 +1,43 @@
+/* General styling for the vertical navbar */
+.nav.flex-column {
+  background-color: #ddd; /* Silver background color */
+  color: black; /* Set the text color to black */
+  width: 250px; /* Set a fixed width */
+  height: 100vh; /* Full height */
+  padding: 1rem;
+}
+
+.nav-section {
+  margin-bottom: 1rem;
+}
+
+.nav-link-section {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: black !important; /* Set the section header text color to black */
+}
+
+.nav-link {
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Adjust space between icon and text */
+  padding: 10px 15px;
+  border-radius: 5px;
+  color: black !important; /* Set the link text color to black */
+}
+
+.nav-link:hover {
+  background-color: #ddd; /* Change background color on hover to a darker shade of silver */
+  color: black !important; /* Ensure the text color stays black on hover */
+  text-decoration: none;
+}
+
+.nav-link i {
+  font-size: 1.5rem; /* Increase icon size */
+  color: #ffa500; /* Set icon color to orange */
+}
+
+hr {
+  border: 1px solid #fff;
+}
