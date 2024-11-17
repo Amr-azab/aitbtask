@@ -1,5 +1,5 @@
 .error-photo {
-  background: url("../../../assets/images/pagenotfound.JPG") no-repeat center;
+  background: url("../../core/assets/images/pagenotfound.JPG") no-repeat center;
   background-size: contain;
   width: 40rem;
   height: 40rem;

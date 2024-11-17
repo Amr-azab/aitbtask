@@ -1,5 +1,5 @@
-const AppError = require("../utlis/appError"); // Import your AppError class
-const catchAsync = require("../utlis/catchAsync"); // Import your catchAsync wrapper
+const AppError = require("../utlis/appError"); 
+const catchAsync = require("../utlis/catchAsync"); 
 const jwt = require("jsonwebtoken");
 const { promisify } = require("util");
 const knex = require("../../db/knex");

@@ -7,7 +7,7 @@ import { ListOfItemsComponent } from './Modules/list-of-items/list-of-items.comp
 import { UpdateRequestComponent } from './Modules/update-request/update-request.component';
 import { ModelComponent } from './shared/component/model/model.component';
 import { PageNotFoundComponent } from './Modules/page-not-found/page-not-found.component';
-import { AuthGuard } from './core/services/auth/auth.guard';
+import { AuthGuard } from './core/guard/auth.guard';
 import { ViewticketComponent } from './shared/component/viewticket/viewticket.component';
 
 export const routes: Routes = [
